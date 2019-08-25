@@ -1,4 +1,4 @@
-const db = require("../models")
+const db = require("../models");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
@@ -10,7 +10,6 @@ module.exports = function (app) {
 
         scrapeTMZ(data => {
             const articles = data;
-            console.log(articles)
             res.status(200).end();
         });
 
@@ -40,13 +39,27 @@ function scrapeTMZ(cb) {
                     });
                     article.link = $(data).children(".article__header").children("a").attr("href");
                     article.image = $(data).children(".article__blocks").find("img").attr("src");
-                    article.snippet = $(data).children(".article__blocks").children("section:nth-child(2)").text().trim();
+
+                    let snippetsLong = $(data).children(".article__blocks").children("section:nth-child(2)").text().trim().split(" ");
+                    let snippetsShort;
+                    let snippet;
+                    if(snippetsLong.length > 20){
+                        snippetsShort= snippetsLong.slice(0,19);
+                        snippetsShort.push("...");
+                        snippet= snippetsShort.join(" ");
+                    }else{
+                        snippet = snippetsLong.join(" ");
+                    }
+                     
+
+                    console.log(snippet);
+                    article.snippet = `${snippet}`;
                     articles.push(article);
-                    db.Article.create(article).then(data => console.log(data)).catch(err => console.log(err));
+                    db.Article.create(article).then(data => console.log("Success")).catch(err => console.log(err));
                 }
 
             })
-            // console.log(articles);
+            
             cb(articles);
         });
     })

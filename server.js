@@ -1,12 +1,15 @@
+require("dotenv").config();
 const express = require("express");
 const exphbs = require("express-handlebars");
 const db = require("./models");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const app = express();
+
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
+
+const app = express();
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
