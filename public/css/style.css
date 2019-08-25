@@ -1,39 +1,3 @@
-/* body{
-    background: #aaa;
-}
-
-.container{
-    margin: 0 auto;
-    width: 100%;
-}
-
-.headline{
-    background: #800;
-    font-size: 32px;
-}
-
-.article{
-    min-height: 305px;
-    overflow: hidden;    
-    background: #fff5;
-    font-size: 24px;
-    border-radius: 5px;
-}
-
-.article img{
-    width: 300px;
-    border: 2px solid #0005;
-}
-
-.headline a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.headline a:hover{
-    color: #00f;
-    text-decoration: none;
-} */
 
 .articleContainer a{
     text-decoration: none;
@@ -49,9 +13,12 @@
 }
 
 .article{
+    box-sizing: border-box;
+    font-size: 1.3vw;
     overflow: hidden;
-    position: relative;
-    height: 350px;
+    width: calc(15vw);
+    height: calc(15vw * 1.5);
+    margin: 0 auto;
     border: 3px solid black;
     filter: grayscale(50%)
 }
@@ -59,12 +26,12 @@
 .articleStamp{
     position: absolute;
     transform: rotate(-45deg);
-    top: 3%;
-    left: -17%;
-    padding: 0 50px 0 50px;
+    top: 2%;
+    left: -40%;
+    width: 100%;
     border: 2px solid white;
     color: white;
-    font-size: 22px;
+    font-size: 85%;
     font-weight: bold;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
     background: red;
@@ -72,24 +39,24 @@
 
 .mainTitle{
     color: white;
-    font-size: 26px;
+    font-size: 100%;
     
 }
 .subTitle{
     color: yellow;
-    font-size: 22px;
+    font-size: 85%;
     
 }
 
 .articleTitle{
     font-weight: 900;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;  
-    line-height: 28px;
+    line-height: 120%;
 }
 
 .articleSnippet{
     color: white;
-    font-size: 16px;
+    font-size: 72%;
     font-weight: 700;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
 }
@@ -104,4 +71,18 @@
     background-size: contain;
 }
 
+.article:hover{
+    transform: scale(1.1);
+    z-index: 9000;
+    border: 3px solid gold;
+    filter: grayscale(0%)
 
+}
+
+.titleWrapper{
+    margin-top: 20%;
+}
+
+.contentWrapper{
+    margin-top: 10%; 
+}
