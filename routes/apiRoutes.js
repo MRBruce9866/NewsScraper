@@ -9,7 +9,6 @@ module.exports = function (app) {
     app.get("/api/scrape", function (req, res) {
 
         scrapeTMZ(data => {
-            const articles = data;
             res.status(200).end();
         });
 
@@ -18,6 +17,30 @@ module.exports = function (app) {
     app.get("/api/articles", function (req, res) {
 
         db.Article.find({}).then(data => {
+            res.json(data);
+        })
+
+    })
+
+    app.post("/api/note/create/:id", function(req, res) {
+        db.Note.create(req.body, function(error, saved) {
+          if (error) {
+            console.log(error);
+          }
+          else {
+              db.Article.findOneAndUpdate({_id: req.params.id},{$push: {notes: saved._id}}).then(response => {
+                res.send(saved);
+              }).catch(err =>{
+                  throw err;
+              })
+            
+          }
+        });
+      });
+
+    app.get("/api/articles/:id", function (req, res) {
+
+        db.Article.findOne({_id: req.params.id}).populate("notes").then(data => {
             res.json(data);
         })
 
@@ -59,6 +82,8 @@ function scrapeTMZ(cb) {
                 }
 
             })
+
+            db.Note.remove({});
             
             cb(articles);
         });

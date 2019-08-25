@@ -22,9 +22,9 @@ const ArticleSchema = new Schema({
     required: true
   },
 
-  reviews: [{
+  notes: [{
     type: Schema.Types.ObjectId,
-    ref: "Review"
+    ref: "Note"
   }]
 });
 
