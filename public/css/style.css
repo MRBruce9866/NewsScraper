@@ -29,7 +29,7 @@ body{
     height: calc(15vw * 1.5);
     margin: 0 auto;
     border: 3px solid black;
-    box-shadow: #000 8px 8px 8px;
+    
     filter: grayscale(50%)
 }
 
@@ -79,7 +79,8 @@ body{
 .articleContainer .article:hover{
     transform: scale(1.1);
     z-index: 9000;
-    border: 3px solid gold;
+    border: 1px solid gold;
+    box-shadow: #000 8px 8px 8px;
     filter: grayscale(0%)
 
 }
