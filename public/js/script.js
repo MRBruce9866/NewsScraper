@@ -53,7 +53,7 @@ $(document).on("click", ".articleContainer .article", function (event) {
 
 })
 
-$(document).click(function(event) {
+$(document).click((event) => {
     //if you click on anything except the modal itself or the "open modal" link, close the modal
     if (!$(event.target).closest("#articleModal").length) {
         $("#articleModal .articleDisplay").empty();
@@ -61,4 +61,10 @@ $(document).click(function(event) {
     $("#articleModal .notes").empty();
         $("#articleModal").hide();
     }
+  });
+
+  $("#scrapeBtn").on("click", (event) => {
+    $.get("/api/scrape").then(() =>{
+        location.reload();
+    });
   });

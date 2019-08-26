@@ -1,34 +1,17 @@
-{{!-- <div class="container-full">
-    {{#each articles}}
-    <div class="article m-3">
-        <div class="row text-center headline">
-            <div class="col-12">
-                <a href="{{link}}"><strong>{{title.[0]}}</strong> {{title.[1]}} {{title.[2]}}</a>
-            </div>
-        </div>
-        <div class="row m-4 content text-md-left text-center">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <img src="{{image}}" alt="">
-            </div>
-
-            <div class="col-lg-8 col-md-6 col-sm-12">
-                <p>{{snippet}}</p>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-12">
-                <input class="btn btn-primary" type="button" value="Input">
-                <input class="btn btn-primary" type="button" value="Input">
-            </div>
-        </div>
-    </div>
-
-    {{/each}}
-</div> --}}
-
 <div class="container-full">
-    <div class="row m-3">
-        <div class="col-12">
+    <div class="jumbotron jumbotron-fluid myJumbotron mb-0">
+  <div class="container text-center">
+    <h1>News Scraper</h1>
+    <p>Your source of useless news scraped from the bottom of the trash!</p>
+  </div>
+</div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="utility p-2 mb-3">
+                <button type="button" class="btn btn-primary" id="scrapeBtn">Refresh Articles</button>
+            </div>
+        </div>
+        <div class="col-12 ">
             <div class="articleContainer">
                 <div class="row">
                     {{!-- articles go here--}}
@@ -47,7 +30,7 @@
                             </div>
                             <div class="row contentWrapper">
                                 <div class="col-12 text-center">
-                                    <div class="articleSnippet">{{ snippet }} </div>
+                                    <div class="articleSnippet px-2">{{ snippet }} </div>
                                 </div>
                             </div>
 

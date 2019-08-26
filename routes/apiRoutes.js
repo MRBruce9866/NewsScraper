@@ -83,9 +83,12 @@ function scrapeTMZ(cb) {
 
             })
 
-            db.Note.remove({});
+            db.Note.remove({}, () => {
+                console.log(`Removed`)
+                cb(articles);
+            });
             
-            cb(articles);
+            
         });
     })
 };
